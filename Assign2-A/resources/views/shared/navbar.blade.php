@@ -17,22 +17,28 @@
                     <li><a href="{{ url('/') }}">Home</a></li>
                 </ul>
 
+
+
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
-                    @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">Login</a></li>
-                        <li><a href="{{ url('/register') }}">Register</a></li>
-                    @else
+                    @if (Auth::check())
+                        @if(Auth::user()->hasRole('Admin'))
+                            {{--<li>{!!link_to_action('Admin\PageController@dashboard', 'Dashboard') !!} </li>--}}
+                            <li><a href="{{ url('/admin/dashboard') }}">Dashboard</a></li>
+                       @endif
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
-                            <ul class="dropdown-menu" role="menu">
+                            <ul class="dropdown-menu pull-right clearfix">
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                             </ul>
                         </li>
+                    @else
+                        <li><a href="{{ url('/login') }}">Login</a></li>
+                        <li><a href="{{ url('/register') }}">Register</a></li>
                     @endif
                 </ul>
 
