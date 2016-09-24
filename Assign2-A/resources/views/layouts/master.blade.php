@@ -14,7 +14,9 @@
     <link href="{{URL::asset('css/owl.theme.css')}}" rel="stylesheet">
     <link href="{{URL::asset('css/owl.carousel.css')}}" rel="stylesheet">
     <link href="{{URL::asset('css/custom.css')}}" rel="stylesheet">
-
+    <script src="{{URL::asset('js/jquery.js')}}"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet">
 
     <!-- Colors -->
     <link href="{{URL::asset('css/css-index.css')}}" rel="stylesheet" media="screen">
@@ -48,7 +50,7 @@
 <div class="shadow"></div>
 @include('shared.footer')
 <!-- /.javascript files -->
-<script src="{{URL::asset('js/jquery.js')}}"></script>
+
 <script src="{{URL::asset('js/bootstrap.min.js')}}"></script>
 <script src="{{URL::asset('js/custom.js')}}"></script>
 <script src="{{URL::asset('js/jquery.sticky.js')}}"></script>

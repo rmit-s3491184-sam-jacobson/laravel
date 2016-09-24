@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Movie;
 use App\Http\Controllers\Controller;
 
 class MovieController extends Controller
@@ -16,7 +17,9 @@ class MovieController extends Controller
      */
     public function index()
     {
-        //
+        $movies = Movie::all();
+
+        return view('backend.movies.index')->with('movies', $movies);
     }
 
     /**
