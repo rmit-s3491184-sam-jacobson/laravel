@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Ticket;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -16,7 +17,9 @@ class TicketController extends Controller
      */
     public function index()
     {
-        //
+        $tickets = Ticket::all();
+
+        return view('backend.tickets.index')->with('tickets', $tickets);
     }
 
     /**
@@ -26,7 +29,7 @@ class TicketController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.tickets.create');
     }
 
     /**
@@ -35,9 +38,14 @@ class TicketController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Requests\CreateTicketRequest $request)
     {
-        //
+        Ticket::insert(['type' => $request['type'], 'price' => $request['price']]);
+
+
+        //return view('backend.movies.index')->with('movies', $movies);
+        return redirect('admin/ticket')->with('status', 'A new ticket type has been created!');
+
     }
 
     /**
@@ -59,7 +67,9 @@ class TicketController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ticket = Ticket::find($id);
+
+        return view('backend.tickets.edit')->with('ticket', $ticket);
     }
 
     /**
@@ -69,9 +79,16 @@ class TicketController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Requests\EditTicketRequest $request, $id)
     {
-        //
+        $ticket = Ticket::findOrFail($id);
+
+        $input = $request->all();
+
+        $ticket->fill($input)->save();
+
+
+        return redirect('admin/ticket')->with('status', 'Ticket Editing Successful');
     }
 
     /**
@@ -82,6 +99,8 @@ class TicketController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Ticket::destroy($id);
+
+        return redirect('admin/ticket')->with('status', 'Ticket Successfully Deleted');
     }
 }

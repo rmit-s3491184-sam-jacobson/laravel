@@ -3,7 +3,12 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <h1>Content</h1>
+            <h1>Movies</h1>
+            @if (session('status'))
+                <div class="alert alert-success">
+                    {{ session('status') }}
+                </div>
+            @endif
             <a href="movie/create" class="btn btn-primary btn-raised">Create</a>
 
             <table id="example" class="display" cellspacing="0" width="100%">

@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-md-12">
             <h1>Create Movie</h1>
-            {!! Form::open(['url'=>'/admin/movie']) !!}
+            {!! Form::open(['url'=>'/admin/movie', 'files' => true]) !!}
             <div class="form-group">
                 {!! Form::label('name', 'Title:') !!}
                 {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Title']) !!}
@@ -16,8 +16,10 @@
             </div>
             <div class="form-group">
                 {!! Form::label('name', 'Image:') !!}
-                {!! Form::text('image', null, ['class' => 'form-control', 'placeholder' => 'Image']) !!}
+                {!! Form::file('image', null) !!}
+                {{--{!! Form::text('image', null, ['class' => 'form-control', 'placeholder' => 'Image']) !!}--}}
             </div>
+
             <div class="form-group">
                 {!! Form::label('name', 'Minutes:') !!}
                 {!! Form::text('minutes', null, ['class' => 'form-control', 'placeholder' => 'Minutes']) !!}
@@ -37,7 +39,7 @@
             </div>
 
 
-            {!! Form::submit('Add Content', ['class'=>'btn btn-primary']) !!}
+            {!! Form::submit('Add Ticket', ['class'=>'btn btn-primary']) !!}
             <a href="../movies" class="btn btn-primary btn-raised">Cancel</a>
             {!! Form::close() !!}
 

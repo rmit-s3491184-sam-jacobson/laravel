@@ -4,9 +4,11 @@
     <div class="row">
         <div class="col-md-12">
             <h1>Edit</h1>
-            {!! Form::model($content, [
-'method' => 'PATCH',
-'action' => ['Admin\ContentController@update', $content->id]
+            {!! Form::model($movie, [
+            'method' => 'PATCH',
+            'enctype'=> "multipart/form-data",
+            'action' => ['Admin\MovieController@update', $movie->id
+            ]
 ]) !!}
 
             <div class="form-group">
@@ -15,21 +17,35 @@
             </div>
 
             <div class="form-group">
-                {!! Form::label('name', 'Content:') !!}
-                {!! Form::textarea('content', null, ['class' => 'form-control']) !!}
+                {!! Form::label('name', 'Description:') !!}
+                {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
             </div>
             <div class="form-group">
-                {!! Form::label('name', 'Sort Order:') !!}
-                {!! Form::text('sortOrder', null, ['class' => 'form-control']) !!}
+                {!! Form::label('name', 'Image:') !!}
+
+                {!! Form::file('image', null) !!}
+
             </div>
 
             <div class="form-group">
-                {!! Form::label('name', 'Page:') !!}
-                {!! Form::text('pageId', null , ['class' => 'form-control']) !!}
+                {!! Form::label('name', 'Minutes:') !!}
+                {!! Form::text('minutes', null , ['class' => 'form-control']) !!}
+            </div>
+            <div class="form-group">
+                {!! Form::label('name', 'Actors:') !!}
+                {!! Form::text('actors', null , ['class' => 'form-control']) !!}
+            </div>
+            <div class="form-group">
+                {!! Form::label('name', 'Directors:') !!}
+                {!! Form::text('directors', null , ['class' => 'form-control']) !!}
+            </div>
+            <div class="form-group">
+                {!! Form::label('name', 'Classification:') !!}
+                {!! Form::text('classification', null , ['class' => 'form-control']) !!}
             </div>
 
             {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-            <a href="../content" class="btn btn-primary btn-raised">Cancel</a>
+            <a href="../movie" class="btn btn-primary btn-raised">Cancel</a>
 
             {!! Form::close() !!}
             @if ($errors->any())

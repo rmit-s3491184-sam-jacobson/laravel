@@ -9,6 +9,7 @@
                         <div class="row-action-primary">
                             <i class="mdi-social-person"></i>
                         </div>
+
                         <div class="row-content">
                             <div class="action-secondary"><i class="mdi-social-info"></i></div>
                             <h4 class="list-group-item-heading">Manage Movies</h4>
@@ -24,7 +25,7 @@
                         <div class="row-content">
                             <div class="action-secondary"><i class="mdi-material-info"></i></div>
                             <h4 class="list-group-item-heading">Manage Ticket Information</h4>
-                            <a href="/admin/roles" class="btn btn-default btn-raised">Manage</a>
+                            <a href="ticket" class="btn btn-default btn-raised">Manage</a>
                         </div>
                     </div>
 
