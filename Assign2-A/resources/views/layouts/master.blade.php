@@ -18,6 +18,7 @@
     <script src="{{URL::asset('js/jquery.js')}}"></script>
     <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
     <link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet">
+    <script src="{{URL::asset('js/jssor.slider-21.1.5.mini.js')}}"></script>
 
     <!-- Colors -->
     <link href="{{URL::asset('css/css-index.css')}}" rel="stylesheet" media="screen">
@@ -61,11 +62,7 @@
 <script>
     new WOW().init();
 </script>
-<script>
-    $(document).ready(function () {
-        $('#example').DataTable();
-    });
-</script>
+
 
 
 </body>

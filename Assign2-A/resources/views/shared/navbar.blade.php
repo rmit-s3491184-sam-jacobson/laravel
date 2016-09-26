@@ -9,7 +9,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand site-name" href="#top"><img src="images/logo2.png" alt="logo"></a>
+                <a class="navbar-brand site-name" href="#top"><span class="logo-name">MI CINEMA</span></a>
             </div>
 
             <div id="navbar-scroll" class="collapse navbar-collapse navbar-backyard navbar-right">
