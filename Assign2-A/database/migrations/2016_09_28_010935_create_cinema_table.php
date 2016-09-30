@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTicketsTable extends Migration
+class CreateCinemaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,12 @@ class CreateTicketsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tickets', function (Blueprint $table) {
+        Schema::create('cinema', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('type');
-            $table->decimal('price');
-            $table->integer('sessionId');
+            $table->integer('movieId');
+            //movieId will be our foreign key in the model
+            $table->text('cinema');
 
-            $table->timestamps();
         });
     }
 
@@ -29,6 +28,6 @@ class CreateTicketsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('tickets');
+        //
     }
 }
