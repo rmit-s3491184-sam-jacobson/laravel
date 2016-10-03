@@ -15,6 +15,7 @@
             <div id="navbar-scroll" class="collapse navbar-collapse navbar-backyard navbar-right">
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/') }}">Home</a></li>
+                    <li><a href="{{ url('/movies') }}">Movies</a></li>
                 </ul>
 
 
@@ -39,6 +40,7 @@
                     @else
                         <li><a href="{{ url('/login') }}">Login</a></li>
                         <li><a href="{{ url('/register') }}">Register</a></li>
+
                     @endif
                 </ul>
 

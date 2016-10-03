@@ -3,8 +3,11 @@
 
 
 Route::auth();
-
+Route::get('/movie/ticketpage/{id}', 'MoviePageController@ticketpage');
 Route::get('/', 'HomeController@index');
+Route::get('/movies', 'MoviePageController@index');
+Route::get('/movies/ticketpage', 'MoviePageController@ticketpage');
+//Route needs to have the URL of the form *post* for the search function
 
 Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'manager'), function () {
     Route::get('/dashboard', 'PageController@dashboard');
@@ -32,4 +35,8 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
         'as' => 'ticket.update',
         'uses' => 'TicketController@update'
     ));
+
+
+
+
 });
