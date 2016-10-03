@@ -38,9 +38,9 @@
 <!-- /.preloader -->
 {{--<div id="preloader"></div>--}}
 <div id="top"></div>
-@yield('header')
-@include('shared.navbar')
 
+@include('shared.navbar')
+@yield('slider')
 
 
 
@@ -49,6 +49,7 @@
         @yield('content')
     </div>
 </div>
+
 
 
 <div class="shadow"></div>
