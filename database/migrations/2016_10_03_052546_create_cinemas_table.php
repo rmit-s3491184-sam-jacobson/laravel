@@ -1,9 +1,7 @@
 <?php
-
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-
-class CreateCinemaTable extends Migration
+class CreateCinemasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,15 +10,12 @@ class CreateCinemaTable extends Migration
      */
     public function up()
     {
-        Schema::create('cinema', function (Blueprint $table) {
+        Schema::create('cinemas', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('movieId');
-            //movieId will be our foreign key in the model
-            $table->text('cinema');
-
+            $table->string('name');
+            $table->string('address');
         });
     }
-
     /**
      * Reverse the migrations.
      *
@@ -28,6 +23,6 @@ class CreateCinemaTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('cinemas');
     }
 }

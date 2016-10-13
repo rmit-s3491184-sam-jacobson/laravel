@@ -2,7 +2,7 @@
 use App\Session;
 use Illuminate\Support\Facades\Input;
 Route::post('/movie/ticketpage/cart', 'MoviePageController@cart');
-Route::post('/movie/ticketpage/paymentrecieved', 'PaymentPageController@paymentrecieved');
+Route::post('/movie/ticketpage/paymentrecieved', 'PaymentPageController@store');
 //Route::get('/cart', 'MoviePageController@cart')->name('cart');
 Route::auth();
 Route::get('/movies', 'MoviePageController@index');
