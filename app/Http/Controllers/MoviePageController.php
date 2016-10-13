@@ -25,9 +25,7 @@ class MoviePageController extends Controller
         $movie = Movie::find($id);
         $cinemas = Cinema::all();
         $sessions = Session::all();
-        var_dump($id);
-        var_dump("SPACE");
-        var_dump($movie);
+
         $join = Session::where('movie_id', "$id")
             ->join('cinemas', 'cinemas.id', '=', 'sessions.cinema_id')
             ->get();
