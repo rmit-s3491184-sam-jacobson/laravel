@@ -78,32 +78,26 @@ class MoviePageController extends Controller
         $formData = array(
             'cinema'  => Input::get('cinema'),
             'sesh'  => Input::get('sesh'),
-            'ticket' => Input::get('ticket'),
-            'count' => Input::get('count')
+            'adultCount' => Input::get('adultCount'),
+            'concessionCount' => Input::get('concessionCount'),
+            'childCount' => Input::get('childCount')
         );
         $cinemaDetails = Cinema::find($formData['cinema']);
         $session = Session::find($formData['sesh']);
         $movieId = $session->movie_id;
         $movieTitle = Movie::find($movieId);
-        $ticketType = $_POST['ticket'];
-        if($ticketType == 'adult')
-        {
-            $cost = ($formData['count'] * 15);
-        }
-        elseif($ticketType == 'concession')
-        {
-            $cost = ($formData['count'] * 10);
-        }
-        else
-        {
-            $cost = ($formData['count'] * 5);
-        }
+        $adultCount = $_POST['adultCount'];
+        $concessionCount = $_POST['concessionCount'];
+        $childCount = $_POST['childCount'];
+        $cost = ($adultCount*15)+($concessionCount*10)+($childCount*5);
+        $count = $adultCount + $concessionCount + $childCount;
         return view('movies/ticketpage/cart')
             ->with('formData', $formData)
             ->with('cinemaDetails', $cinemaDetails)
             ->with('session', $session)
             ->with('movieTitle', $movieTitle)
-            ->with('cost', $cost);
+            ->with('cost', $cost)
+            ->with('count', $count);
     }
 
 

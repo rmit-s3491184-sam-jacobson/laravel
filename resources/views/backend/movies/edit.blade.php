@@ -44,20 +44,33 @@
                 {!! Form::text('classification', null , ['class' => 'form-control']) !!}
             </div>
 
-            {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-            <a href="../movie" class="btn btn-primary btn-raised">Cancel</a>
-
-            {!! Form::close() !!}
-            @if ($errors->any())
-                <ul class="alert alert-danger">
-                    @foreach($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            @endif
-
-            <div class="divider"></div>
-
+            <div class="form-group">
+                <label>Select Status:</label><br>
+                <select class="form-control" name="status">
+                    @if($movie->status == "now showing")
+                        <option selected value="now showing">Now Showing</option>
+                        <option value="coming soon">Coming Soon</option>
+                    @else
+                        <option value="now showing">Now Showing</option>
+                        <option selected value="coming soon">Coming Soon</option>
+                    @endif
+                </select>
+            </div>
         </div>
+
+        {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+        <a href="../movies" class="btn btn-primary btn-raised">Cancel</a>
+
+        {!! Form::close() !!}
+        @if ($errors->any())
+            <ul class="alert alert-danger">
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        @endif
+
+        <div class="divider"></div>
+
     </div>
 @endsection

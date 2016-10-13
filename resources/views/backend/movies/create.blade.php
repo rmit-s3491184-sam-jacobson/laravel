@@ -37,9 +37,16 @@
                 {!! Form::label('name', 'Classification:') !!}
                 {!! Form::text('classification', null, ['class' => 'form-control', 'placeholder' => 'Classification']) !!}
             </div>
+            <div class="form-group">
+            <label>Select Status:</label><br>
+            <select class="form-control" name="status">
+                <option value="now showing">Now Showing</option>
+                <option value="coming soon">Coming Soon</option>
+            </select>
+            </div>
 
 
-            {!! Form::submit('Add Ticket', ['class'=>'btn btn-primary']) !!}
+            {!! Form::submit('Add Movie', ['class'=>'btn btn-primary']) !!}
             <a href="../movies" class="btn btn-primary btn-raised">Cancel</a>
             {!! Form::close() !!}
 

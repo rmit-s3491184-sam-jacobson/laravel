@@ -36,6 +36,13 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
         'uses' => 'MovieController@update'
     ));
 
+
+    Route::get('/sessions', 'MovieSessionController@index');
+    Route::get('/sessions/create', 'MovieSessionController@create');
+    Route::get('/sessions/deleteId={id}', 'MovieSessionController@destroy');
+    Route::post('/sessions', 'MovieSessionController@store');
+
+
     Route::get('/ticket', 'TicketController@index' );
     Route::get('/ticket/create', 'TicketController@create');
     Route::get('/ticketEdit/{id}', 'TicketController@edit');
