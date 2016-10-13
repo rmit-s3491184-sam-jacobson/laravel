@@ -61,7 +61,7 @@
                              {!! Form::submit('Click Me!') !!}
                         {!! Form::close() !!}
 
-                        {!!  Form::open(array('url' => 'movie/searchResult', 'method' => 'GET')) !!}
+                        {!!  Form::open(array('url' => 'movie/searchResult', 'method' => 'POST')) !!}
                         <p>Search by Cinema</p>
                         {!! Form::text('Search') !!}
                         {!! Form::submit('Click Me!') !!}

@@ -6,13 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Session extends Model
 {
-    protected $table = "Session";
-    protected $fillable = ['id', 'cinemaId', 'time'];
-
-    public function cinema() {
-        return $this->belongsTo('cinema'); // this matches the Eloquent model
+    protected $fillable = ['movie_id', 'cinema_id', 'session_time'];
+    public $timestamps = false;
+    public function movie()
+    {
+        return $this->belongsTo('App\Movie');
     }
-    public function ticket() {
-        return $this->hasMany('ticket'); // this matches the Eloquent model
+    public function cinema()
+    {
+        return $this->belongsTo('App\Cinema');
     }
 }

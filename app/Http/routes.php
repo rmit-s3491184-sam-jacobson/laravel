@@ -1,13 +1,24 @@
 <?php
-
-
-
+use App\Session;
+use Illuminate\Support\Facades\Input;
+Route::post('/movie/ticketpage/cart', 'MoviePageController@cart');
+Route::post('/movie/ticketpage/paymentrecieved', 'PaymentPageController@paymentrecieved');
+//Route::get('/cart', 'MoviePageController@cart')->name('cart');
 Route::auth();
 Route::get('/movies', 'MoviePageController@index');
 Route::get('/', 'HomeController@index');
 Route::get('/movie/ticketpage/{id}', 'MoviePageController@ticketpage');
 Route::get('movie/searchResult', 'MoviePageController@search');
+Route::post('movie/searchResult', 'MoviePageController@cinemaSearch');
+//Route::get('/ajax-subcat/{id}', 'MoviePageController@ajax');
+//trying with a controller instead of directly through a route.
+Route::get('/ajax-subcat', function(){
+   $cinema_id = Input::get('cinema_id');
 
+    $sessions = Session::where('cinema_id', '=', $cinema_id)->get();
+
+    return Response::json($sessions);
+});
 Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'manager'), function () {
     Route::get('/dashboard', 'PageController@dashboard');
     Route::get('users', 'UsersController@index');

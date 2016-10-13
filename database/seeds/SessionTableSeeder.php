@@ -11,14 +11,10 @@ class SessionTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('session')->insert([
-            'cinemaId' => '1',
-            'time' => '2000-01-01'
-        ]);
-
-        DB::table('session')->insert([
-            'cinemaId' => '2',
-            'time' => '2001-01-01'
+        DB::table('sessions')->insert([
+            'cinema_id' => '10',
+            'movie_id' => '1',
+            'session_time' => '2016-01-01 12:00:59'
         ]);
     }
 }

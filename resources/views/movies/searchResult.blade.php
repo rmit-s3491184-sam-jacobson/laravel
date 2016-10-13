@@ -3,37 +3,54 @@
 @section('content')
     <div id="feature">
         <div class="container">
-            @if (!empty($movie))
-                @if ($movie[0]['status'] == 'now showing')
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <a href="{{ URL::to("movie/ticketpage/{$movie[0]['id']}") }}"><h3>{{ $movie[0]['title'] }}</h3></a>
-                            <img src="/WDAAssign2/Assign2-A/{{ $movie[0]['image'] }}" height="200" width="150">
+            {{var_dump($cinema)}}
+            @if ($movie != 1)
+                @foreach(json_decode($movie, true) as $mov)
+                    @if ($mov['status'] == 'now showing')
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <a href="{{ URL::to("movie/ticketpage/{$mov['id']}") }}"><h3>{{ $mov['title'] }}</h3></a>
+                                <img src="/WDAAssign2/Assign2-A/{{ $mov['image'] }}" height="200" width="150">
+                            </div>
+                            <div class="col-sm-4">
+                                <h3>Description</h3>
+                                <p>{{ $mov['description'] }}</p>
+                            </div>
                         </div>
-                        <div class="col-sm-4">
-                            <h3>Description</h3>
-                            <p>{{ $movie[0]['description'] }}</p>
+                    @elseif ($mov['status'] == 'coming soon')
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <h3>{{ $mov['title'] }}</h3>
+                                <img src="/WDAAssign2/Assign2-A/{{ $mov['image'] }}" height="200" width="150">
+                            </div>
+                            <div class="col-sm-4">
+                                <h3>Description</h3>
+                                <p>{{ $mov['description'] }}</p>
+                            </div>
                         </div>
-                    </div>
-                @else ($movie[0]['status'] == 'coming soon')
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <h3>{{ $movie[0]['title'] }}</h3>
-                            <img src="/WDAAssign2/Assign2-A/{{ $movie[0]['image'] }}" height="200" width="150">
-                        </div>
-                        <div class="col-sm-4">
-                            <h3>Description</h3>
-                            <p>{{ $movie[0]['description'] }}</p>
-                        </div>
-                    </div>
-                @endif
+                    @endif
+                @endforeach
+            @elseif ($cinema != 1)
+                @foreach(json_decode($cinema, true) as $c)
+                     <div class="row">
+                         <div class="col-sm-4">
+                             <h3>{{ $c['name'] }}</h3>
+
+                         </div>
+                         <div class="col-sm-4">
+                             <h3>Address</h3>
+                             <p>{{ $c['address'] }}</p>
+                         </div>
+                     </div>
+                @endforeach
             @else
                 <div class="row">
                     <div class="col-sm-4">
-                        <p>Search did not return any results</p>
+                        <h3>Search did not return any results</h3>
                     </div>
                 </div>
             @endif
+
         </div>
     </div>
 @endsection

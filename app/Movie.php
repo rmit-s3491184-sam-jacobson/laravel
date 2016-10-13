@@ -6,9 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Movie extends Model
 {
-    protected $fillable = ['title', 'description', 'image', 'minutes', 'actors', 'directors', 'classification', 'status'];
-    public function cinema() {
-        return $this->belongToMany('Cinema'); // this matches the Eloquent model
+    protected $fillable = ['title', 'description', 'image', 'minutes', 'classification', 'status'];
+
+    protected $table = 'movies';
+
+    public $timestamps = false;
+    public function sessionTimes()
+    {
+        return $this->hasMany('App\Session', 'movie_id');
     }
 
 }

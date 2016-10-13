@@ -19,10 +19,6 @@ class MovieController extends Controller
     public function index()
     {
         $movies = Movie::all();
-        $id = 1;
-        $session = Session::where('movieId', '=', $id)-get();
-        $cinemas = Cinema::all();
-
 
         return view('backend.movies.index')->with('movies', $movies);
     }

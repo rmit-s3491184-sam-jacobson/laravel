@@ -4,16 +4,17 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class Cinema extends Model
 {
-    protected $table = "Cinema";
-    protected $fillable = ['id', 'movieId', 'cinema'];
+    protected $table = 'cinemas';
+    protected $fillable = ['name', 'address'];
+    public $timestamps = false;
 
-    public function movie() {
-        return $this->belongToMany('Movie'); // this matches the Eloquent model
+    public function session()
+    {
+        return $this->hasMany('App\Session', 'cinema_id');
     }
-    public function session(){
-        return $this->hasMany('Session');
-    }
-
 }
+
+
