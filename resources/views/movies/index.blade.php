@@ -17,7 +17,8 @@
                             @if ($movie->status == 'now showing')
                             <div class="row">
                                 <div class="col-sm-4">
-                                    <a href="{{ URL::to("movie/ticketpage/{$movie->id}") }}"><h3>{{ $movie->title }}</h3></a>
+
+                                    <a href="{{ URL::to("movie/ticketpage/$movie->id)") }}"><h3>{{ $movie->title }}</h3></a>
                                     <img src="/WDAAssign2/Assign2-A/{{ $movie->image }}" height="200" width="150">
                                 </div>
                                 <div class="col-sm-4">
@@ -32,7 +33,7 @@
             </div>
             <div id="menu1" class="tab-pane fade">
                 <div id="feature">
-                    <div class="row">
+                <div class="row">
                         <div class="col-lg-12 margin-tb">
                             <div class="pull-left">
                                 <h2>Your Wish List</h2>

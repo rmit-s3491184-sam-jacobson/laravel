@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Http\Requests\PaymentValidation;
+use Illuminate\Support\Facades\Validator;
 use App\Http\Requests;
 
 class PaymentPageController extends Controller
@@ -16,7 +17,7 @@ class PaymentPageController extends Controller
     public function paymentRecieved()
     {
 
-        return view('movies/ticketpage/paymentrecieved');
+
     }
 
 
@@ -27,7 +28,7 @@ class PaymentPageController extends Controller
      */
     public function create()
     {
-        //
+        return view('post.create');
     }
 
     /**
@@ -38,9 +39,32 @@ class PaymentPageController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+//        $this->validate($request, [
+//            'cardNo' => 'required|max:19',
+//            'CVV' => 'required|max:3',
+//            'name' => 'required',
+//            'address' => 'required'
+//        ]);
+        $validator = Validator::make($request->all(), [
+            'cardNo' => 'required|max:19',
+            'CVV' => 'required|max:3',
+            'name' => 'required',
+            'address' => 'required'
+        ]);
+        if ($validator->fails()) {
 
+            return redirect('movies/ticketpage/paymentdenied')
+                ->withErrors($validator);
+    }
+        else {
+
+        }
+        return view('movies/ticketpage/paymentrecieved');
+    }
+    public function denied()
+    {
+        return view('movies/ticketpage/paymentdenied');
+    }
     /**
      * Display the specified resource.
      *
@@ -70,7 +94,7 @@ class PaymentPageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(PaymentValidation $request, $id)
+    public function update(Request $request, $id)
     {
         //
     }
