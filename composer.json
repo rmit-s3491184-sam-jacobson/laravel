@@ -10,7 +10,8 @@
         "laravelcollective/html": "5.2.x-dev",
         "zizaco/entrust": "5.2.x-dev",
         "illuminate/html": "5.*",
-        "intervention/image": "2.3.8"
+        "intervention/image": "2.3.8",
+        "gloudemans/shoppingcart": "^2.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

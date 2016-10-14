@@ -1,2 +1,8 @@
-{{movie}}
-{{movie.replies}}
+{{movie.comment.name}}
+
+{{#each movie}}
+    <p> {{this.comment}} </p>
+    {{#each this.comment.replies}}
+        <p>{{this}}</p>
+    {{/each}}
+{{/each}}

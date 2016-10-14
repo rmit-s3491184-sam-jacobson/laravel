@@ -10,4 +10,8 @@ class Ticket extends Model
     public function session() {
         return $this->belongsTo('Session'); // this matches the Eloquent model
     }
+
+    public function shoppingcart(){
+        return $this->belongsTo('ShoppingCart');
+    }
 }

@@ -13,7 +13,7 @@
                         <div class="row-content">
                             <div class="action-secondary"><i class="mdi-social-info"></i></div>
                             <h4 class="list-group-item-heading">Manage Movies</h4>
-                            <a href="movies" class="btn btn-default btn-raised">All Movies</a>
+                            <a href="movie" class="btn btn-default btn-raised">All Movies</a>
                             <a href="movie/create" class="btn btn-primary btn-raised">Create Movie</a>
                         </div>
                     </div>

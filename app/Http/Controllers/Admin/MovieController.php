@@ -50,8 +50,7 @@ class MovieController extends Controller
             'minutes' => $request->get('minutes'),
             'actors' => $request->get('actors'),
             'directors' => $request->get('directors'),
-            'classification' => $request->get('classification'),
-            'status' => $request->get('status')
+            'classification' => $request->get('classification')
         ));
         $movie->save();
 
@@ -67,7 +66,7 @@ class MovieController extends Controller
         }
 
         //return view('backend.movies.index')->with('movies', $movies);
-        return redirect('admin/movies')->with('status', 'A new movie has been created!');
+        return redirect('admin/movie')->with('status', 'A new movie has been created!');
 
 
 
@@ -113,8 +112,7 @@ class MovieController extends Controller
             'minutes' => $request->get('minutes'),
             'actors' => $request->get('actors'),
             'directors' => $request->get('directors'),
-            'classification' => $request->get('classification'),
-            'status' => $request->get('status')
+            'classification' => $request->get('classification')
         ));
 
         if( $request->hasFile('image') ) {

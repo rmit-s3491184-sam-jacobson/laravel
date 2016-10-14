@@ -1,9 +1,14 @@
 <?php
 use App\Session;
 use Illuminate\Support\Facades\Input;
+Route::resource('shoppingcart','ShoppingCartController');
+Route::get('/shoppingcart/emptycart', 'ShoppingCartController@emptyCart');
+
+
+Route::resource('wishlist','WishListController');
+
 Route::post('/movie/ticketpage/cart', 'MoviePageController@cart');
-Route::post('paymentrecieved', 'PaymentPageController@store');
-Route::get('/movies/ticketpage/paymentdenied', 'PaymentPageController@denied');
+Route::post('/movie/ticketpage/paymentrecieved', 'PaymentPageController@paymentrecieved');
 //Route::get('/cart', 'MoviePageController@cart')->name('cart');
 Route::auth();
 Route::get('/movies', 'MoviePageController@index');
@@ -36,13 +41,6 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
         'as' => 'movie.update',
         'uses' => 'MovieController@update'
     ));
-
-
-    Route::get('/sessions', 'MovieSessionController@index');
-    Route::get('/sessions/create', 'MovieSessionController@create');
-    Route::get('/sessions/deleteId={id}', 'MovieSessionController@destroy');
-    Route::post('/sessions', 'MovieSessionController@store');
-
 
     Route::get('/ticket', 'TicketController@index' );
     Route::get('/ticket/create', 'TicketController@create');

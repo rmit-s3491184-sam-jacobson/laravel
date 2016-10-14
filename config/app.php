@@ -149,7 +149,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
-
+        Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -158,6 +158,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Illuminate\Html\HtmlServiceProvider::class,
+
+
 
     ],
 
@@ -173,7 +175,7 @@ return [
     */
 
     'aliases' => [
-
+        'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
         'App' => Illuminate\Support\Facades\App::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
         'Auth' => Illuminate\Support\Facades\Auth::class,
@@ -208,7 +210,6 @@ return [
         'Form'=> Illuminate\Html\FormFacade::class,
         'HTML'=> Illuminate\Html\HtmlFacade::class,
         'Image' => Intervention\Image\Facades\Image::class,
-
     ],
 
 ];

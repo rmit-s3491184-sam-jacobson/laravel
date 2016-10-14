@@ -16,4 +16,9 @@ class Session extends Model
     {
         return $this->belongsTo('App\Cinema');
     }
+
+    public function shoppingcart()
+    {
+        return $this->belongsTo('App\ShoppingCart');
+    }
 }

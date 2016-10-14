@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 
 var commentSchema = mongoose.Schema({
     comment: {
+        movieId: String,
         name: String,
         message: String,
         replies: [{

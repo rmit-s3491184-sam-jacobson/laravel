@@ -1,17 +1,19 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use App\Movie;
 use Illuminate\Http\Request;
 use App\Cinema;
 use App\Session;
 use App\Http\Requests;
-
+use Cart;
 
 
 class MoviePageController extends Controller
 {
+
     public function index()
     {
         $movies = Movie::all();
@@ -25,6 +27,7 @@ class MoviePageController extends Controller
         $movie = Movie::find($id);
         $cinemas = Cinema::all();
         $sessions = Session::all();
+
 
         $join = Session::where('movie_id', "$id")
             ->join('cinemas', 'cinemas.id', '=', 'sessions.cinema_id')
@@ -72,31 +75,59 @@ class MoviePageController extends Controller
             ->with('cinema', json_encode($cinema, true))
             ->with('movie', $movie);
     }
+
     public function cart()
     {
         $formData = array(
             'cinema'  => Input::get('cinema'),
             'sesh'  => Input::get('sesh'),
-            'adultCount' => Input::get('adultCount'),
-            'concessionCount' => Input::get('concessionCount'),
-            'childCount' => Input::get('childCount')
+            'ticket' => Input::get('ticket'),
+            'count' => Input::get('count')
         );
         $cinemaDetails = Cinema::find($formData['cinema']);
         $session = Session::find($formData['sesh']);
         $movieId = $session->movie_id;
         $movieTitle = Movie::find($movieId);
-        $adultCount = $_POST['adultCount'];
-        $concessionCount = $_POST['concessionCount'];
-        $childCount = $_POST['childCount'];
-        $cost = ($adultCount*15)+($concessionCount*10)+($childCount*5);
-        $count = $adultCount + $concessionCount + $childCount;
-        return view('movies/ticketpage/cart')
-            ->with('formData', $formData)
-            ->with('cinemaDetails', $cinemaDetails)
-            ->with('session', $session)
-            ->with('movieTitle', $movieTitle)
-            ->with('cost', $cost)
-            ->with('count', $count);
+        $ticketType = $_POST['ticket'];
+        $qty=$formData['count'];
+        if($ticketType == 'adult')
+        {
+            $cost = ($formData['count'] * 15);
+        }
+        elseif($ticketType == 'concession')
+        {
+            $cost = ($formData['count'] * 10);
+        }
+        else
+        {
+            $cost = ($formData['count'] * 5);
+        }
+
+
+        Cart::add(array(
+            'id'=>'1',
+            'name' => $movieTitle->title,
+            'qty'=>$qty,
+            'price'=> $cost,
+            'options' =>
+                [
+                    'session' => $session->session_time,
+                    'cinemaName'=> $cinemaDetails->name,
+                    'ticketType'=>$ticketType,
+                ]
+
+        ));
+
+        $tickets=Cart::content();
+        return view('shoppingcart.index',compact('tickets'));
+
+//        return view('shoppingcart.index');
+//            ->with('formData', $formData)
+//            ->with('cinemaDetails', $cinemaDetails)
+//            ->with('session', $session)
+//            ->with('movieTitle', $movieTitle)
+//            ->with('cost', $cost);
+
     }
 
 

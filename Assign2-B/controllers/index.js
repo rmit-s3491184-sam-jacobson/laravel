@@ -28,8 +28,7 @@ router.get('/test', function (req, res) {
       // parse the json result
       var result = JSON.parse(body);
       console.log(result);
-      //res.writeHead(200, {'Content-Type': 'application/json'});
-     // res.write(JSON.stringify(result));
+
      res.render('test.hbs', { movie: JSON.stringify(result), title: 'Movie Blog' });
     } else {
       console.log(error, response.statusCode, body);
@@ -50,6 +49,7 @@ router.get('/blog', isLoggedIn, function(req, res, next) {
 });
 
 router.get('/blog-post', function(req, res, next) {
+
   res.render('blog-post.hbs', {user: req.user, title: 'Movie Blog' });
 });
 
@@ -68,36 +68,62 @@ router.get('/profile', isLoggedIn, function(req, res) {
 router.get('/get-data', function(req, res, next) {
   Comment.find()
       .then(function(doc) {
-          res.render('test.hbs', {movie: doc});
+
+          res.render('test.hbs', {movie: JSON.stringify(doc)});
       });
 });
 
 //UPDATE
-router.get('/update', function(req, res, next) {
- //var objid = new require('mongodb').ObjectID("57ff837c39bc3613f03961c7");
-
-  company = Comment.findById("57ff837c39bc3613f03961c7", function(err, doc) {
-    if (err) {
-      console.error('error, no entry found');
-    }
-    res.render('test.hbs', { movie: doc, title: 'Movie Blog' });
-  });
-  //var result = JSON.parse(company);
-  //res.render('test.hbs', { movie:JSON.stringify(result) , title: 'Movie Blog' });
-  //var result = JSON.parse(company);
+router.get('/test-blog-post', function(req, res, next) {
 
 
-  /*UserData.findById(id, function(err, doc) {
-    if (err) {
-      console.error('error, no entry found');
-    }
-    doc.title = req.body.title;
-    doc.content = req.body.content;
-    doc.author = req.body.author;
-    doc.save();
-  })*/
+    Comment.find().where('comment.movieId').equals('1234')
+        .then(function(doc) {
+            res.render('test-blog-post.hbs', {movie: doc});
+        });
 
 });
+
+//UPDATE
+router.post('/create', function(req, res, next) {
+    var id = req.body.movieId;
+
+
+        var data = new Comment({
+            comment: {
+                movieId: req.body.movieId,
+                name: req.body.name,
+                message: req.body.message,
+                replies: []
+            }
+        });
+        data.save();
+
+    res.redirect('/');
+});
+
+//UPDATE
+router.post('/reply', function(req, res, next) {
+    var id = req.body.id;
+    Comment.findById(id, function(err, doc) {
+        if (err) {
+            console.error('error, no entry found');
+        }
+
+        var reply = {name: req.body.name, message:req.body.message};
+
+        doc.comment.replies.push(reply);
+        doc.save();
+        res.redirect('/test-blog-post');
+    });
+
+
+    //data.save();
+
+
+});
+
+
 
 //CREATE
 router.get('/insert', function(req, res, next) {
@@ -105,6 +131,7 @@ router.get('/insert', function(req, res, next) {
 
   var data = new Comment({
     comment: {
+        movieId: "1234",
       name: "Lucas",
       message: "this is a message",
       replies: [{name: "Rick", message: "Reply 1"}, {name: "Vin", message: "Reply 2"}, {name: "Luke", message: "Reply 3"}]
