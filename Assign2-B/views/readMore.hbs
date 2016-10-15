@@ -1,0 +1,67 @@
+<div id="content">
+    <div class="container background-white">
+        <div class="row margin-vert-30">
+            <!-- Main Column -->
+            <div class="col-md-12">
+                <!-- Blog Post -->
+
+                <div class="blog-post padding-bottom-20">
+                    <!-- Blog Item Header -->
+                    <div class="blog-item-header">
+                        <!-- Title -->
+                        <h2>
+                            <a href="/posts/{{movie.id}}">
+                                {{movie.original_title}}</a>
+                        </h2>
+                        <div class="clearfix"></div>
+                        <!-- End Title -->
+                        <!-- Date -->
+                        <div class="blog-post-date">
+                            <a href="#">{{movie.release_date}}</a>
+                        </div>
+                        <!-- End Date -->
+                    </div>
+                    <!-- End Blog Item Header -->
+
+                    <!-- Blog Item Body -->
+                    <div class="blog">
+                        <div class="clearfix"></div>
+                        <div class="blog-post-body row margin-top-15">
+                            <div class="col-md-5">
+                                <img class="margin-bottom-20" src="http://image.tmdb.org/t/p/w185/{{movie.poster_path}}"
+                                     alt="thumb1">
+                            </div>
+                            <div class="col-md-7">
+                                <p>{{movie.overview}}</p>
+                            </div>
+                            <div class="col-md-12">
+                                <p>Populatrity: {{movie.popularity}}</p>
+                            </div>
+                            <div class="col-md-12">
+                                <p>Vote Count: {{movie.vote_count}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Blog Item Body -->
+                    <!-- Blog Item Details -->
+                    <div class="blog-post-details">
+                        <!-- Author Name -->
+                        Score: <b>{{movie.vote_average}}</b>
+                        <!-- # of Comments -->
+                        <div class="blog-post-details-item blog-post-details-item-left blog-post-details-item-last">
+                            <a href="">
+                                <i class="fa fa-comments color-gray-light"></i>
+                                2 Comments
+                            </a>
+                        </div>
+                        <!-- End # of Comments -->
+                    </div>
+                    <!-- End Blog Item Details -->
+                </div>
+                <!-- End Blog Item -->
+            </div>
+
+        </div>
+        <!-- End Side Column -->
+    </div>
+</div>

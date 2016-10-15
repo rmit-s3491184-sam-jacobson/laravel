@@ -8,12 +8,12 @@
                     <div class="blog-item-header">
                         <h2>
                             <a href="#">
-                                Just a Sample Blog Bost
+                                {{movie.original_title}}
                             </a>
                         </h2>
                         <!-- Date -->
                         <div class="blog-post-date">
-                            <a href="#">22nd Apr, 2014</a>
+                            <a href="#">{{movie.release_date}}</a>
                         </div>
                         <!-- End Date -->
                     </div>
@@ -33,75 +33,23 @@
                         <div class="clearfix"></div>
                         <div class="blog-post-body row margin-top-15">
                             <div class="col-md-5">
-                                <img class="margin-bottom-20" src="images/blog/image1.jpg" alt="image1">
+                                <img class="margin-bottom-20"
+                                     src="http://image.tmdb.org/t/p/w185/{{movie.poster_path}}" alt="image1">
                             </div>
                             <div class="col-md-7">
-                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                                    tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
-                                    eos et accusam et justo duo dolores et ea rebum.
-                                    Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                                    tempor invidunt ut labore et dolore magna
-                                    aliquyam erat, sed diam voluptua.</p>
+                                <p></p>
                             </div>
                             <div class="col-md-12">
                                 <p>
-                                    Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                                    tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem
-                                    ipsum
-                                    dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
-                                    ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
-                                    et justo duo dolores et ea rebum. Stet
-                                    clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem
-                                    ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-                                    invidunt ut labore et dolore magna aliquyam
-                                    erat, sed diam voluptua.</p>
-                                <blockquote class="primary">
-                                    <p>
-                                        <em>"Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
-                                            nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat."</em>
-                                    </p>
-                                    <small>
-                                        Someone famous in
-                                        <cite title="Source Title">Source Title</cite>
-                                    </small>
-                                </blockquote>
-                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                                    tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
-                                    eos et accusam et justo duo dolores et ea rebum.
-                                    Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                                    tempor invidunt ut labore et dolore magna
-                                    aliquyam erat, sed diam voluptua.</p>
-                                <p>Ut summo deserunt sit, quaeque hendrerit assentior cu mei. Sale electram nam ut.
-                                    Putent perpetua reformidans ex vix, libris nostrud tractatos cu sit, est porro omnes
-                                    nominati eu. Cu nullam similique complectitur
-                                    eam. Viris phaedrum ullamcorper id eos.</p>
+                                    {{movie.overview}}</p>
+
+                                <p>Populatrity: {{movie.popularity}}</p>
+                                <p>Vote Count: {{movie.vote_count}}</p>
+                                <p>Score: <b>{{movie.vote_average}}</b></p>
                             </div>
                         </div>
                         <div class="blog-item-footer">
-                            <!-- About the Author -->
-                            <div class="blog-author panel panel-default margin-bottom-30">
-                                <div class="panel-heading">
-                                    <h3>About the Author</h3>
-                                </div>
-                                <div class="panel-body">
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <img class="pull-left" src="images/profiles/87.jpg" alt="image1">
-                                        </div>
-                                        <div class="col-md-10">
-                                            <label>John Doe</label>
-                                            <p>Lorem ipsum dolor sit amet, in pri offendit ocurreret. Vix sumo ferri an.
-                                                pfs adodio fugit delenit ut qui. Omittam suscipiantur ex vel,ex audiam
-                                                intellegat gfIn labitur discere eos, nam an feugiat
-                                                voluptua.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End About the Author -->
+
                             <!-- Comments -->
                             <div class="blog-recent-comments panel panel-default margin-bottom-30">
                                 <div class="panel-heading">
@@ -109,7 +57,7 @@
                                 </div>
                                 <ul class="list-group">
 
-                                    {{#each movie}}
+                                    {{#each comment}}
                                         <li class="list-group-item">
                                             <div class="row">
                                                 <div class="col-md-2 profile-thumb">
@@ -185,7 +133,7 @@
                                                                 <input name="name" class="form-control" type="text">
                                                             </div>
                                                         </div>
-                                                        <input name="movieId" class="form-control" value="1234"
+                                                        <input name="movieId" class="form-control" value="{{movie.id}}"
                                                                type="hidden">
                                                         <label>Message</label>
                                                         <div class="row margin-bottom-20">
