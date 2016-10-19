@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/vendor/gloudemans/shoppingcart" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/guzzle/guzzle" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/guzzlehttp/guzzle" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/guzzlehttp/streams" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/inacho/php-credit-card-validator" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/socialite" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/league/oauth1-client" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/rap2hpoutre/laravel-credit-card-validator" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library name="PHARS">
+        <CLASSES>
+          <root url="phar://$MODULE_DIR$/composer.phar/" />
+        </CLASSES>
+        <SOURCES>
+          <root url="phar://$MODULE_DIR$/composer.phar/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="PHP">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/vendor/gloudemans/shoppingcart" />
+          <root url="file://$MODULE_DIR$/vendor/guzzle/guzzle" />
+          <root url="file://$MODULE_DIR$/vendor/guzzlehttp/guzzle" />
+          <root url="file://$MODULE_DIR$/vendor/guzzlehttp/streams" />
+          <root url="file://$MODULE_DIR$/vendor/inacho/php-credit-card-validator" />
+          <root url="file://$MODULE_DIR$/vendor/laravel/socialite" />
+          <root url="file://$MODULE_DIR$/vendor/league/oauth1-client" />
+          <root url="file://$MODULE_DIR$/vendor/rap2hpoutre/laravel-credit-card-validator" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/vendor/gloudemans/shoppingcart" />
+          <root url="file://$MODULE_DIR$/vendor/guzzle/guzzle" />
+          <root url="file://$MODULE_DIR$/vendor/guzzlehttp/guzzle" />
+          <root url="file://$MODULE_DIR$/vendor/guzzlehttp/streams" />
+          <root url="file://$MODULE_DIR$/vendor/inacho/php-credit-card-validator" />
+          <root url="file://$MODULE_DIR$/vendor/laravel/socialite" />
+          <root url="file://$MODULE_DIR$/vendor/league/oauth1-client" />
+          <root url="file://$MODULE_DIR$/vendor/rap2hpoutre/laravel-credit-card-validator" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+  </component>
+</module>
